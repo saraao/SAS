@@ -36,7 +36,7 @@ Our model sequentially predicts the amodal masks for each object in an RGB input
 
 ## Getting Started
 
-We will update the code soon.
+We will update the code very soon.
 
 ### License
 
