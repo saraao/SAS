@@ -11,7 +11,7 @@
     <a href="https://arxiv.org/abs/2405.05791" style="text-decoration:none;">
       <img src="https://img.shields.io/badge/arXiv-2405.05791-b31b1b.svg" alt="arXiv Badge">
     </a>
-    <a href="" style="text-decoration:none;">
+    <a href="https://bmvc2024.org/proceedings/15/" style="text-decoration:none;">
       <img src="https://img.shields.io/badge/Pub-BMVC'24-blue" alt="BMVC Badge">
     </a>
     <a href="https://opensource.org/licenses/MIT" style="text-decoration:none;">
