@@ -55,10 +55,11 @@ We thank the following papers for their open-source code and datasets:
 If you find this helpful in your work, please consider citing our paper:
 ```
 @inproceedings{ao2024sequential,
-  title={Sequential Amodal Segmentation via Cumulative Occlusion Learning},
-  author={Ao, Jiayang and Ke, Qiuhong and Ehinger, Krista A},
-  booktitle={Proceedings of the 35th British Machine Vision Conference},
-  year={2024}
+  title     = {Sequential Amodal Segmentation via Cumulative Occlusion Learning},
+  author    = {Ao, Jiayang and Ke, Qiuhong and Ehinger, Krista A},
+  booktitle = {Proceedings of the 35th British Machine Vision Conference},
+  publisher = {BMVA},
+  year      = {2024}
 }
 ```
 
