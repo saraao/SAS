@@ -15,7 +15,6 @@ import torch
 from PIL import Image
 from matplotlib import cm
 import cv2
-import numpy as np
 
 from guided_diffusion import dist_util, logger
 
