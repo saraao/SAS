@@ -34,15 +34,63 @@ Our model sequentially predicts the amodal masks for each object in an RGB input
 ![](demo.png)
 
 
-## Getting Started
+## Usage
 
-We will update the code very soon.
+### 1. Set up Environment
+Python: 3.10.4
 
-### License
+PyTorch: 2.0.1+cu117
+
+Install dependencies via:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Getting Started
+We set the flags as follows:
+```
+MODEL_FLAGS="--image_size 64 --num_channels 128 --class_cond False --num_res_blocks 2 --num_heads 1 --learn_sigma True --use_scale_shift_norm False --attention_resolutions 16" 
+
+DIFFUSION_FLAGS="--diffusion_steps 1000 --noise_schedule linear --rescale_learned_sigmas False --rescale_timesteps False" 
+
+TRAIN_FLAGS="--lr 1e-4 --batch_size 256"
+```
+
+Train a model, run
+```
+python scripts/train.py --data_dir './example_data/training/'  --save_dir './you/path/to/save/' --noise_rate 0.0 $TRAIN_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS
+```
+
+For sampling an ensemble of 3 segmentation masks, run:
+```
+python scripts/sample.py  --data_dir ./example_data/inference/ --model_path ./you/path/to/save/savedmodelxxxx.pt --predict_save_dir ./you/path/to/save/layer_predict   --num_ensemble 3 $MODEL_FLAGS $DIFFUSION_FLAGS
+```
+
+### 3. Data
+Our dataloader can be found in the file `guided_diffusion/acomloader.py`, the data need to be stored in the following structure:
+```
+Directory is expected to contain some folder structure.
+Directory is named with imageid_layer.
+For example, for image id 1013 and difficulty_level 0 image,
+it has the directory:
+dataset/
+  1013_0/
+    - image.png
+    - mask.png
+    - newmask.png
+  1013_1/
+    - image.png
+    - mask.png
+    - newmask.png
+```
+See our `example_data/training/` for training data examples. See our `example_data/inference/` for inference data examples.
+
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/saraao/SAS/blob/main/LICENSE) file for details.
 
-### Acknowledgments
+## Acknowledgments
 
 We thank the following papers for their open-source code and datasets:
 - Diffusion Models for Implicit Image Segmentation Ensembles [[PMLR 2022]](https://proceedings.mlr.press/v172/wolleb22a)  
