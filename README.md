@@ -72,19 +72,52 @@ Our dataloader can be found in the file `guided_diffusion/acomloader.py`, the da
 ```
 Directory is expected to contain some folder structure.
 Directory is named with imageid_layer.
-For example, for image id 1013 and difficulty_level 0 image,
-it has the directory:
-dataset/
-  1013_0/
+
+Training:
+For example, for image id 123 with 2 layers of objects, for image id 456 with 3 layers of objects, it has the directory:
+training_dataset/
+  123_0/
     - image.png
-    - mask.png
-    - newmask.png
-  1013_1/
+    - mask.png #Object mask for the inital layer
+    - newmask.png #Empty cumulative mask for the inital layer
+  123_1/
     - image.png
-    - mask.png
-    - newmask.png
+    - mask.png #Object mask for the 2nd layer
+    - newmask.png #Cumulative mask of all objects in the initial layer
+  123_2/
+    - image.png
+    - mask.png #The last layer should be an empty object mask
+    - newmask.png  #Cumulative mask of all objects in the initial and 2nd layers
+  456_0/
+    - image.png
+    - mask.png #Object mask for the inital layer
+    - newmask.png #Empty cumulative mask for the inital layer
+  456_1/
+    - image.png
+    - mask.png #Object mask for the 2nd layer
+    - newmask.png #Cumulative mask of all objects in the initial layer
+  456_2/
+    - image.png
+    - mask.png #Object mask for the 3rd layer
+    - newmask.png  #Cumulative mask of all objects in the initial and 2nd layers
+  456_3/
+    - image.png
+    - mask.png #The last layer should be an empty object mask
+    - newmask.png  #Cumulative mask of all objects in the initial and 2nd and 3rd layers 
+See our `example_data/training/` for training data examples.
+
+Sampling:
+For example, for image id 1234 and image id 5678, it has the directory:
+inference_dataset/
+  1234_0/
+    - image.png
+    - newmask.png #Empty cumulative mask for inference data
+  5678_0/
+    - image.png
+    - newmask.png #Empty cumulative mask for inference data
+See our `example_data/inference/` for inference data examples.
 ```
-See our `example_data/training/` for training data examples. See our `example_data/inference/` for inference data examples.
+
 
 ## License
 
